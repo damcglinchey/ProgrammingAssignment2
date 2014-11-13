@@ -1,8 +1,11 @@
-## Pair of functions to calculate the inverser of a matrix
-## and get/retrieve inverse from the cache
+## Pair of functions to calculate the inverse of a matrix
+## and get/retrieve inverse from the cache if it exists
 
-## Write a short comment describing this function
-
+## Create a special "matrix" containing a list of functions to
+## 1. set (cache) the matrix
+## 2. get the matrix
+## 3. set (cache) the value of the inverse of the matrix
+## 4. get the value of the inverse of the matrix
 makeCacheMatrix <- function(x = matrix()) {
     I <- NULL
     set <- function(y) {
@@ -18,10 +21,9 @@ makeCacheMatrix <- function(x = matrix()) {
 }    
 
 
-## Write a short comment describing this function
-
+## Calculate the inverse of the matrix and cache it
+## ... or retrieve cached value if it exists
 cacheSolve <- function(x, ...) {
-    ## Return a matrix that is the inverse of 'x'
     I <- x$getinverse()
     if(!is.null(I)) {
         message("getting cached data")
@@ -30,5 +32,5 @@ cacheSolve <- function(x, ...) {
     data <- x$get()
     I<- solve(data, ...)
     x$setinverse(I)
-    I
+    I ## Return a matrix that is the inverse of 'x'
 }
